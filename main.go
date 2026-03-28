@@ -28,6 +28,13 @@ func main() {
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
 		uzunLink := r.URL.Query().Get("url")
 		fmt.Fprintln(w, uzunLink)
+
+		for kod, link := range urlMap {
+			if link == uzunLink {
+				fmt.Fprintln(w, " Zaten kısaltılmış! "+kod)
+			}
+		}
+
 		kisaKod := kisaKodUret()
 		urlMap[kisaKod] = uzunLink
 		fmt.Fprintln(w, "Kısa linkin: localhost:8080/r/"+kisaKod)

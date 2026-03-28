@@ -1,11 +1,21 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
 	"net/http"
 )
 
 var urlMap = make(map[string]string)
+
+func kisaKodUret() string {
+	harfler := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	kod := ""
+	for i := 0; i < 6; i++ {
+		kod += string(harfler[rand.Intn(len(harfler))])
+	}
+	return kod
+}
 
 func main() {
 

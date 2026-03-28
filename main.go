@@ -33,5 +33,12 @@ func main() {
 		fmt.Fprintln(w, "Kısa linkin: localhost:8080/r/"+kisaKod)
 	})
 
+	http.HandleFunc("/r/", func(w http.ResponseWriter, r *http.Request) {
+		kisaKod := r.URL.Path[3:]
+		uzunLink := urlMap[kisaKod]
+		http.Redirect(w, r, uzunLink, http.StatusFound)
+
+	})
+
 	http.ListenAndServe(":8080", nil)
 }

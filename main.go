@@ -1,8 +1,8 @@
 package main
 
 import (
-	"crypto/rand"
 	"fmt"
+	"math/rand"
 	"net/http"
 )
 
@@ -26,7 +26,11 @@ func main() {
 	})
 
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Link kısaltma endpoint'i")
+		uzunLink := r.URL.Query().Get("url")
+		fmt.Fprintln(w, uzunLink)
+		kisaKod := kisaKodUret()
+		urlMap[kisaKod] = uzunLink
+		fmt.Fprintln(w, "Kısa linkin: localhost:8080/r/"+kisaKod)
 	})
 
 	http.ListenAndServe(":8080", nil)

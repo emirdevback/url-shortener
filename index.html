@@ -1,230 +1,179 @@
 <!DOCTYPE html>
-
-<html class="light" lang="tr"><head>
+<html class="light" lang="tr">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>KısaLink - Dijital Hassasiyet</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-background": "#1d1a22",
-              "tertiary": "#5f3500",
-              "surface-container-low": "#f9f1fc",
-              "surface-tint": "#6f43c0",
-              "on-secondary-container": "#605080",
-              "primary": "#4f1c9e",
-              "on-tertiary-container": "#ffbf83",
-              "on-secondary-fixed": "#22123f",
-              "on-primary-container": "#d8c2ff",
-              "outline-variant": "#ccc3d5",
-              "tertiary-container": "#804900",
-              "background": "#fef7ff",
-              "error-container": "#ffdad6",
-              "on-secondary": "#ffffff",
-              "on-surface": "#1d1a22",
-              "on-error-container": "#93000a",
-              "on-tertiary-fixed": "#2d1600",
-              "secondary-fixed": "#ebddff",
-              "on-primary-fixed": "#250059",
-              "secondary": "#675687",
-              "surface": "#fef7ff",
-              "on-primary": "#ffffff",
-              "on-secondary-fixed-variant": "#4e3e6d",
-              "on-surface-variant": "#4a4453",
-              "surface-container-highest": "#e7e0eb",
-              "tertiary-fixed": "#ffdcbf",
-              "inverse-primary": "#d3bbff",
-              "outline": "#7b7484",
-              "secondary-container": "#dac5fe",
-              "surface-container": "#f3ebf7",
-              "inverse-surface": "#322f37",
-              "tertiary-fixed-dim": "#ffb872",
-              "on-primary-fixed-variant": "#5727a6",
-              "inverse-on-surface": "#f6eef9",
-              "surface-bright": "#fef7ff",
-              "primary-fixed": "#ebddff",
-              "surface-container-lowest": "#ffffff",
-              "secondary-fixed-dim": "#d1bdf5",
-              "on-tertiary-fixed-variant": "#6a3b00",
-              "on-tertiary": "#ffffff",
-              "error": "#ba1a1a",
-              "primary-fixed-dim": "#d3bbff",
-              "surface-variant": "#e7e0eb",
-              "on-error": "#ffffff",
-              "primary-container": "#673ab7",
-              "surface-container-high": "#ede6f1",
-              "surface-dim": "#dfd7e3"
-            },
-            fontFamily: {
-              "headline": ["Inter"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
-      }
-    </script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-background": "#1d1a22", "tertiary": "#5f3500", "surface-container-low": "#f9f1fc",
+        "surface-tint": "#6f43c0", "on-secondary-container": "#605080", "primary": "#4f1c9e",
+        "on-tertiary-container": "#ffbf83", "on-secondary-fixed": "#22123f", "on-primary-container": "#d8c2ff",
+        "outline-variant": "#ccc3d5", "tertiary-container": "#804900", "background": "#fef7ff",
+        "error-container": "#ffdad6", "on-secondary": "#ffffff", "on-surface": "#1d1a22",
+        "on-error-container": "#93000a", "on-tertiary-fixed": "#2d1600", "secondary-fixed": "#ebddff",
+        "on-primary-fixed": "#250059", "secondary": "#675687", "surface": "#fef7ff",
+        "on-primary": "#ffffff", "on-secondary-fixed-variant": "#4e3e6d", "on-surface-variant": "#4a4453",
+        "surface-container-highest": "#e7e0eb", "tertiary-fixed": "#ffdcbf", "inverse-primary": "#d3bbff",
+        "outline": "#7b7484", "secondary-container": "#dac5fe", "surface-container": "#f3ebf7",
+        "inverse-surface": "#322f37", "tertiary-fixed-dim": "#ffb872", "on-primary-fixed-variant": "#5727a6",
+        "inverse-on-surface": "#f6eef9", "surface-bright": "#fef7ff", "primary-fixed": "#ebddff",
+        "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#d1bdf5",
+        "on-tertiary-fixed-variant": "#6a3b00", "on-tertiary": "#ffffff", "error": "#ba1a1a",
+        "primary-fixed-dim": "#d3bbff", "surface-variant": "#e7e0eb", "on-error": "#ffffff",
+        "primary-container": "#673ab7", "surface-container-high": "#ede6f1", "surface-dim": "#dfd7e3"
+      },
+      fontFamily: { "headline": ["Inter"], "body": ["Inter"], "label": ["Inter"] },
+      borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+    },
+  },
+}
+</script>
 <style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        /* Custom spacing as per design system */
-        .spacing-standard { padding: 2rem; }
-        .hero-title { letter-spacing: -0.02em; line-height: 1.2; }
-        .turkish-text { line-height: 1.1; }
-    </style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .glass-panel { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .hero-title { letter-spacing: -0.02em; line-height: 1.2; }
+  .turkish-text { line-height: 1.1; }
+</style>
 </head>
 <body class="bg-background text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100/50 dark:border-slate-800/50 shadow-sm dark:shadow-none font-['Inter'] antialiased tracking-tight">
-<nav class="flex justify-between items-center h-20 px-6 md:px-12 max-w-7xl mx-auto">
-<div class="text-2xl font-black text-violet-800 dark:text-violet-200">KısaLink</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-all duration-300" href="#">Hakkımızda</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-all duration-300" href="#">İletişim</a>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:bg-primary-container transition-all duration-300 active:scale-95 opacity-90">
-                    Giriş Yap
-                </button>
-</div>
-<!-- Mobile Menu Toggle (Simplified for UI display) -->
-<div class="md:hidden">
-<span class="material-symbols-outlined text-on-surface-variant">menu</span>
-</div>
-</nav>
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100/50 shadow-sm font-['Inter'] antialiased tracking-tight">
+  <nav class="flex justify-between items-center h-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-2xl font-black text-violet-800">KısaLink</div>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-slate-600 hover:text-violet-600 transition-all duration-300" href="#">Hakkımızda</a>
+      <a class="text-slate-600 hover:text-violet-600 transition-all duration-300" href="#">İletişim</a>
+      <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:bg-primary-container transition-all duration-300 active:scale-95 opacity-90">Giriş Yap</button>
+    </div>
+    <div class="md:hidden">
+      <span class="material-symbols-outlined text-on-surface-variant">menu</span>
+    </div>
+  </nav>
 </header>
+
 <main class="pt-32 pb-20">
-<!-- Hero Section -->
-<section class="max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
-<div class="space-y-8">
-<h1 class="hero-title text-5xl md:text-7xl font-black text-on-surface tracking-tighter turkish-text">
-                    Uzun Linklerinizi <br/>
-<span class="text-primary-container">Anında Kısaltın</span>
-</h1>
-<p class="text-xl md:text-2xl text-on-surface-variant font-medium max-w-xl">
-                    Hızlı, güvenli ve ücretsiz URL kısaltma servisi. Dijital varlığınızı şık bir dokunuşla yönetin.
-                </p>
-<div class="flex items-center gap-4 justify-center md:justify-start">
-<div class="flex -space-x-3">
-<img class="w-10 h-10 rounded-full border-2 border-background" data-alt="professional corporate headshot of a smiling woman in business attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1fC9HHOK66X02AdlifMyEH-Tkd-qp-5Z_GLOO9Ys5xvCxwZRVNdS0sAX6hd8oS-1Of-t5lUShp8qGHC8OnF3SV7stOkybA7knj7sgxE8opLLiYLqvm-0ZxAQEfufXGVfpyIE5w-pYhaSSctN54lc62hiqh3K-pQpU99-sfkPcDNHcFE0OvRrqVo_aR9OloRLOMYy1ouf1cLW073Qbv7H4TMpCnsdHmXA7n0u_bbW5OgTxyQhl_AbaREYE4eo_RxBEqPUl18YtYV9Z"/>
-<img class="w-10 h-10 rounded-full border-2 border-background" data-alt="close-up portrait of a creative professional man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhzP6qGDR8mJOqqpCdVnXwrMdXeILWhuA8vug4HtbKXJyeP-QgBG9jNOk8bZ1Xhgb27bXuGQ7dUsgPaoRmhHS4uPkXqR_NFn4R38qUERqu6I9GcnpBUH71nyeW_qb3Icf-2EtGIHzwQML795xjNfnAvgKtvBmdwlLcUWA7L7tUUYhiYRWOBB2EMtmPwY0SNzUAtApgmPBDKzWV24GpHJcBvYchXKxfqkSFCS7clT1XdQW7NBE61zXF32ChVw5AirF37ioosrtXrGQp"/>
-<img class="w-10 h-10 rounded-full border-2 border-background" data-alt="smiling young developer with headphones in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuxr0ZjQORr0lGWzgMCINwRKvVgG2U2ikg8wPXX0G51uy5hCHyqo6o8-m2qdqMJPfXdnhk8dlp_y0S3NflsyrLcPJ6hSOzw_o0vz2yYGBkAMyB9hMVqqG_r7ozIQJZRDYjucx-kme97HMpTBNMreP9FtHl9L10Zy8mQWm4OhObhfYfKJysnzd-1B8yATEfCtOmlkgsb06c4JIVnVlET22WteW1mgsRoUHrZ33qlRIXZJtyro5jgOaCPCMlni-NziP5gTNP_wAley7d"/>
-</div>
-<span class="text-sm font-semibold text-on-surface-variant">10,000+ Kullanıcı tarafından güveniliyor</span>
-</div>
-</div>
-<!-- Main Interactive Component -->
-<div class="relative">
-<!-- Decorative background elements -->
-<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl"></div>
-<div class="relative glass-panel rounded-[2rem] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(79,28,158,0.12)] border border-white/40">
-<div class="space-y-6">
-<div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-widest ml-2">Link Kısaltıcı</label>
-<div class="relative group">
-<input class="w-full bg-surface-container-highest border-none rounded-2xl py-5 px-6 text-lg focus:ring-4 focus:ring-primary/20 transition-all duration-300 placeholder:text-outline" placeholder="Uzun linkinizi buraya yapıştırın..." type="text"/>
-<button class="mt-4 md:mt-0 md:absolute md:right-2 md:top-2 md:bottom-2 bg-primary text-on-primary px-8 rounded-xl font-bold hover:bg-primary-container transition-all flex items-center justify-center gap-2 group-hover:shadow-lg active:scale-95">
-                                    Kısalt
-                                    <span class="material-symbols-outlined text-sm">bolt</span>
-</button>
-</div>
-</div>
-<!-- Result Section -->
-<div class="bg-surface-container-low rounded-2xl p-6 border border-primary/5 space-y-4">
-<div class="flex justify-between items-center">
-<span class="text-sm font-semibold text-on-surface-variant">Kısaltılmış Linkiniz:</span>
-<span class="flex items-center gap-1 text-[10px] bg-secondary-container text-on-secondary-fixed px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Aktif</span>
-</div>
-<div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-outline-variant/20">
-<span class="text-xl font-bold text-primary tracking-tight">kisal.ink/xyz123</span>
-<button class="w-full md:w-auto flex items-center justify-center gap-2 text-primary font-bold hover:bg-primary/5 px-6 py-2 rounded-lg transition-colors border border-primary/10">
-<span class="material-symbols-outlined text-lg">content_copy</span>
-                                    Kopyala
-                                </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Grid Feature Section -->
-<section class="max-w-7xl mx-auto px-6 md:px-12 mt-32">
-<div class="grid md:grid-cols-3 gap-8">
-<div class="bg-surface-container rounded-[2rem] p-8 space-y-4 border border-outline-variant/10">
-<div class="w-12 h-12 bg-primary-container/20 text-primary rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined">speed</span>
-</div>
-<h3 class="text-xl font-bold">Işık Hızında</h3>
-<p class="text-on-surface-variant leading-relaxed">Global CDN ağımız sayesinde linkleriniz milisaniyeler içinde yönlendirilir.</p>
-</div>
-<div class="bg-surface-container-high rounded-[2rem] p-8 space-y-4 border border-outline-variant/10">
-<div class="w-12 h-12 bg-tertiary-container/20 text-tertiary rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined">analytics</span>
-</div>
-<h3 class="text-xl font-bold">Detaylı Analitik</h3>
-<p class="text-on-surface-variant leading-relaxed">Tıklama sayılarını, coğrafi verileri ve cihaz istatistiklerini anlık takip edin.</p>
-</div>
-<div class="bg-primary-container text-on-primary-container rounded-[2rem] p-8 space-y-4">
-<div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
-</div>
-<h3 class="text-xl font-bold">Tam Güvenlik</h3>
-<p class="opacity-80 leading-relaxed">SSL sertifikalı ve spam korumalı altyapımız ile linkleriniz her zaman güvende.</p>
-</div>
-</div>
-</section>
+  <section class="max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-8">
+      <h1 class="hero-title text-5xl md:text-7xl font-black text-on-surface tracking-tighter turkish-text">
+        Uzun Linklerinizi <br/>
+        <span class="text-primary-container">Anında Kısaltın</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-on-surface-variant font-medium max-w-xl">
+        Hızlı, güvenli ve ücretsiz URL kısaltma servisi. Dijital varlığınızı şık bir dokunuşla yönetin.
+      </p>
+      <div class="flex items-center gap-4 justify-center md:justify-start">
+        <span class="text-sm font-semibold text-on-surface-variant">10,000+ Kullanıcı tarafından güveniliyor</span>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl"></div>
+      <div class="relative glass-panel rounded-[2rem] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(79,28,158,0.12)] border border-white/40">
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <label class="block text-sm font-bold text-primary uppercase tracking-widest ml-2">Link Kısaltıcı</label>
+            <div class="relative group">
+              <input id="urlInput" class="w-full bg-surface-container-highest border-none rounded-2xl py-5 px-6 text-lg focus:ring-4 focus:ring-primary/20 transition-all duration-300 placeholder:text-outline" placeholder="Uzun linkinizi buraya yapıştırın..." type="text"/>
+              <button id="kisaltBtn" class="mt-4 md:mt-0 md:absolute md:right-2 md:top-2 md:bottom-2 bg-primary text-on-primary px-8 rounded-xl font-bold hover:bg-primary-container transition-all flex items-center justify-center gap-2 active:scale-95">
+                Kısalt
+                <span class="material-symbols-outlined text-sm">bolt</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-low rounded-2xl p-6 border border-primary/5 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-on-surface-variant">Kısaltılmış Linkiniz:</span>
+              <span class="flex items-center gap-1 text-[10px] bg-secondary-container text-on-secondary-fixed px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Aktif</span>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-outline-variant/20">
+              <span id="kisaLinkSonuc" class="text-xl font-bold text-primary tracking-tight cursor-pointer hover:underline">Linkiniz burada görünecek</span>
+              <button id="kopyalaBtn" class="w-full md:w-auto flex items-center justify-center gap-2 text-primary font-bold hover:bg-primary/5 px-6 py-2 rounded-lg transition-colors border border-primary/10">
+                <span class="material-symbols-outlined text-lg">content_copy</span>
+                Kopyala
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 md:px-12 mt-32">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-surface-container rounded-[2rem] p-8 space-y-4 border border-outline-variant/10">
+        <div class="w-12 h-12 bg-primary-container/20 text-primary rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined">speed</span>
+        </div>
+        <h3 class="text-xl font-bold">Işık Hızında</h3>
+        <p class="text-on-surface-variant leading-relaxed">Global CDN ağımız sayesinde linkleriniz milisaniyeler içinde yönlendirilir.</p>
+      </div>
+      <div class="bg-surface-container-high rounded-[2rem] p-8 space-y-4 border border-outline-variant/10">
+        <div class="w-12 h-12 bg-tertiary-container/20 text-tertiary rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined">analytics</span>
+        </div>
+        <h3 class="text-xl font-bold">Detaylı Analitik</h3>
+        <p class="text-on-surface-variant leading-relaxed">Tıklama sayılarını, coğrafi verileri ve cihaz istatistiklerini anlık takip edin.</p>
+      </div>
+      <div class="bg-primary-container text-on-primary-container rounded-[2rem] p-8 space-y-4">
+        <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+        </div>
+        <h3 class="text-xl font-bold">Tam Güvenlik</h3>
+        <p class="opacity-80 leading-relaxed">SSL sertifikalı ve spam korumalı altyapımız ile linkleriniz her zaman güvende.</p>
+      </div>
+    </div>
+  </section>
 </main>
-<!-- Footer -->
-<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
-<div class="flex flex-col items-center md:items-start gap-2">
-<div class="font-bold text-slate-900 dark:text-slate-100 text-lg">KısaLink</div>
-<p class="text-sm font-medium font-['Inter'] text-slate-500">© 2026 KısaLink - Dijital Hassasiyet</p>
-</div>
-<div class="flex items-center gap-8">
-<a class="text-sm font-medium font-['Inter'] text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">Kullanım Koşulları</a>
-<a class="text-sm font-medium font-['Inter'] text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">Gizlilik Politikası</a>
-<a class="text-sm font-medium font-['Inter'] text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">API Dokümantasyonu</a>
-</div>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">language</span>
-<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">terminal</span>
-</div>
-</div>
+
+<footer class="w-full py-12 border-t border-slate-100 bg-slate-50">
+  <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+    <div class="flex flex-col items-center md:items-start gap-2">
+      <div class="font-bold text-slate-900 text-lg">KısaLink</div>
+      <p class="text-sm font-medium text-slate-500">© 2026 KısaLink - Dijital Hassasiyet</p>
+    </div>
+    <div class="flex items-center gap-8">
+      <a class="text-sm font-medium text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">Kullanım Koşulları</a>
+      <a class="text-sm font-medium text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">Gizlilik Politikası</a>
+      <a class="text-sm font-medium text-slate-500 hover:text-violet-500 hover:underline transition-colors" href="#">API Dokümantasyonu</a>
+    </div>
+  </div>
 </footer>
-<!-- BottomNavBar (Mobile Only) -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/10 z-50">
-<div class="flex justify-around items-center h-16 px-4">
-<button class="flex flex-col items-center justify-center text-primary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="text-[10px] font-bold">Ana Sayfa</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined">link</span>
-<span class="text-[10px] font-bold">Linklerim</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined">bar_chart</span>
-<span class="text-[10px] font-bold">İstatistik</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined">person</span>
-<span class="text-[10px] font-bold">Hesabım</span>
-</button>
-</div>
-</div>
-</body></html>
+
+<script>
+  let mevcutKisaKod = '';
+
+  document.getElementById('kisaltBtn').addEventListener('click', async function() {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) return;
+
+    const response = await fetch('/shorten?url=' + encodeURIComponent(url));
+    const text = await response.text();
+    mevcutKisaKod = text.trim();
+
+    const span = document.getElementById('kisaLinkSonuc');
+    span.textContent = 'localhost:8080/r/' + mevcutKisaKod;
+    span.onclick = function() {
+      window.location.href = '/r/' + mevcutKisaKod;
+    };
+  });
+
+  document.getElementById('kopyalaBtn').addEventListener('click', function() {
+    if (mevcutKisaKod) {
+      navigator.clipboard.writeText('http://localhost:8080/r/' + mevcutKisaKod);
+      alert('Kopyalandı!');
+    }
+  });
+</script>
+</body>
+</html>

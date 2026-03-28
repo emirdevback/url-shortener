@@ -21,28 +21,35 @@ func main() {
 
 	fmt.Println("Sunucu başlatılıyor...")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "URL Kısaltıcıya Hoşgeldiniz!")
+		http.ServeFile(w, r, "index.html")
 
 	})
 
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
 		uzunLink := r.URL.Query().Get("url")
-		fmt.Fprintln(w, uzunLink)
 
 		for kod, link := range urlMap {
 			if link == uzunLink {
-				fmt.Fprintln(w, " Zaten kısaltılmış! "+kod)
+				fmt.Fprintln(w, kod)
+				return
 			}
 		}
 
 		kisaKod := kisaKodUret()
 		urlMap[kisaKod] = uzunLink
-		fmt.Fprintln(w, "Kısa linkin: localhost:8080/r/"+kisaKod)
+		fmt.Fprintln(w, kisaKod)
 	})
 
 	http.HandleFunc("/r/", func(w http.ResponseWriter, r *http.Request) {
 		kisaKod := r.URL.Path[3:]
+		if kisaKod == "" {
+			http.NotFound(w, r)
+			return
+		}
 		uzunLink := urlMap[kisaKod]
+		if len(uzunLink) > 0 && uzunLink[:4] != "http" {
+			uzunLink = "https://" + uzunLink
+		}
 		http.Redirect(w, r, uzunLink, http.StatusFound)
 
 	})

@@ -1,14 +1,17 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"math/rand"
 	"net/http"
 
+	_ "github.com/mattn/go-sqlite3"
 	"github.com/skip2/go-qrcode"
 )
 
 var urlMap = make(map[string]string)
+var db *sql.DB
 
 func kisaKodUret() string {
 	harfler := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -22,6 +25,19 @@ func kisaKodUret() string {
 func main() {
 
 	fmt.Println("Sunucu başlatılıyor...")
+
+	var err error
+	db, err = sql.Open("sqlite3", "lindkler.db")
+	if err != nil {
+		fmt.Println("Veri tabanı acılamadı: ", err)
+		return
+	}
+	db.Exec(`CREATE TABLE IF NOT EXISTS linkler(
+	kisaKod TEXT PRIMARY KEY,
+	uzunLink TEXT
+	)`)
+	fmt.Println("Veritabanı hazır!")
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")
 

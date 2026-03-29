@@ -103,6 +103,17 @@ tailwind.config = {
                 Kopyala
               </button>
             </div>
+
+            <!-- QR Kod Bölümü -->
+            <div id="qrBolum" style="display:none;" class="mt-4 flex flex-col items-center gap-3 p-4 bg-white rounded-xl border border-outline-variant/20">
+              <span class="text-sm font-semibold text-on-surface-variant">QR Kod:</span>
+              <img id="qrKod" width="180" class="rounded-xl"/>
+              <a id="indirBtn" download="qrkod.png" class="flex items-center gap-2 text-primary font-bold hover:bg-primary/5 px-6 py-2 rounded-lg transition-colors border border-primary/10">
+                <span class="material-symbols-outlined text-lg">download</span>
+                QR Kodu İndir
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
@@ -166,6 +177,15 @@ tailwind.config = {
     span.onclick = function() {
       window.location.href = '/r/' + mevcutKisaKod;
     };
+
+    // QR kodu göster
+    const qrImg = document.getElementById('qrKod');
+    qrImg.src = '/qr/' + mevcutKisaKod;
+
+    const indirBtn = document.getElementById('indirBtn');
+    indirBtn.href = '/qr/' + mevcutKisaKod;
+
+    document.getElementById('qrBolum').style.display = 'flex';
   });
 
   document.getElementById('kopyalaBtn').addEventListener('click', function() {

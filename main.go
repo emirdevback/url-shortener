@@ -48,29 +48,28 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
-
-		http.HandleFunc("/qr/", func(w http.ResponseWriter, r *http.Request) {
-			kisaKod := r.URL.Path[4:]
-			if kisaKod == "" {
-				http.NotFound(w, r)
-				return
-			}
-			link := "http://localhost:8080/r/" + kisaKod
-			png, err := qrcode.Encode(link, qrcode.Medium, 256)
-			if err != nil {
-				http.Error(w, "Qr kod oluşturulamadı ", 500)
-				return
-			}
-			w.Header().Set("Content-Type", "image/png")
-			w.Write(png)
-		})
-
 		uzunLink := urlMap[kisaKod]
 		if len(uzunLink) > 0 && uzunLink[:4] != "http" {
 			uzunLink = "https://" + uzunLink
 		}
 		http.Redirect(w, r, uzunLink, http.StatusFound)
 
+	})
+
+	http.HandleFunc("/qr/", func(w http.ResponseWriter, r *http.Request) {
+		kisaKod := r.URL.Path[4:]
+		if kisaKod == "" {
+			http.NotFound(w, r)
+			return
+		}
+		link := "http://localhost:8080/r/" + kisaKod
+		png, err := qrcode.Encode(link, qrcode.Medium, 512)
+		if err != nil {
+			http.Error(w, "Qr kod oluşturulamadı ", 500)
+			return
+		}
+		w.Header().Set("Content-Type", "image/png")
+		w.Write(png)
 	})
 
 	http.ListenAndServe(":8080", nil)

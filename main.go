@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/skip2/go-qrcode"
@@ -99,5 +100,9 @@ func main() {
 		w.Write(png)
 	})
 
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	http.ListenAndServe(":"+port, nil)
 }

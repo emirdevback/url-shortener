@@ -61,7 +61,8 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
-		link := "http://localhost:8080/r/" + kisaKod
+		host := r.Host
+		link := "http://" + host + "/r/" + kisaKod
 		png, err := qrcode.Encode(link, qrcode.Medium, 512)
 		if err != nil {
 			http.Error(w, "QR kod oluşturulamadı", 500)

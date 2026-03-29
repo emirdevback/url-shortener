@@ -1,18 +1,15 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 	"math/rand"
 	"net/http"
 	"os"
 
-	_ "github.com/mattn/go-sqlite3"
 	"github.com/skip2/go-qrcode"
 )
 
 var urlMap = make(map[string]string)
-var db *sql.DB
 
 func kisaKodUret() string {
 	harfler := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -24,34 +21,10 @@ func kisaKodUret() string {
 }
 
 func main() {
-
 	fmt.Println("Sunucu başlatılıyor...")
-
-	var err error
-	db, err = sql.Open("sqlite3", "linkler.db")
-	if err != nil {
-		fmt.Println("Veri tabanı acılamadı: ", err)
-		return
-	}
-	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS linkler(
-    kisaKod TEXT PRIMARY KEY,
-    uzunLink TEXT
-)`)
-	if err != nil {
-		fmt.Println("Tablo oluşturulamadı:", err)
-	}
-	rows, _ := db.Query("SELECT kisaKod, uzunLink FROM linkler")
-	for rows.Next() {
-		var kisaKod, uzunLink string
-		rows.Scan(&kisaKod, &uzunLink)
-		urlMap[kisaKod] = uzunLink
-	}
-	rows.Close()
-	fmt.Println("Linkler yüklendi!")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")
-
 	})
 
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
@@ -66,7 +39,6 @@ func main() {
 
 		kisaKod := kisaKodUret()
 		urlMap[kisaKod] = uzunLink
-		db.Exec("INSERT INTO linkler (kisaKod, uzunLink) VALUES (?, ?)", kisaKod, uzunLink)
 		fmt.Fprintln(w, kisaKod)
 	})
 
@@ -81,7 +53,6 @@ func main() {
 			uzunLink = "https://" + uzunLink
 		}
 		http.Redirect(w, r, uzunLink, http.StatusFound)
-
 	})
 
 	http.HandleFunc("/qr/", func(w http.ResponseWriter, r *http.Request) {
@@ -93,7 +64,7 @@ func main() {
 		link := "http://localhost:8080/r/" + kisaKod
 		png, err := qrcode.Encode(link, qrcode.Medium, 512)
 		if err != nil {
-			http.Error(w, "Qr kod oluşturulamadı ", 500)
+			http.Error(w, "QR kod oluşturulamadı", 500)
 			return
 		}
 		w.Header().Set("Content-Type", "image/png")

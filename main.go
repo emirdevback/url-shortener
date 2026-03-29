@@ -27,16 +27,18 @@ func main() {
 	fmt.Println("Sunucu başlatılıyor...")
 
 	var err error
-	db, err = sql.Open("sqlite3", "lindkler.db")
+	db, err = sql.Open("sqlite3", "linkler.db")
 	if err != nil {
 		fmt.Println("Veri tabanı acılamadı: ", err)
 		return
 	}
-	db.Exec(`CREATE TABLE IF NOT EXISTS linkler(
-	kisaKod TEXT PRIMARY KEY,
-	uzunLink TEXT
-	)`)
-	fmt.Println("Veritabanı hazır!")
+	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS linkler(
+    kisaKod TEXT PRIMARY KEY,
+    uzunLink TEXT
+)`)
+	if err != nil {
+		fmt.Println("Tablo oluşturulamadı:", err)
+	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")

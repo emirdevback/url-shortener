@@ -39,6 +39,14 @@ func main() {
 	if err != nil {
 		fmt.Println("Tablo oluşturulamadı:", err)
 	}
+	rows, _ := db.Query("SELECT kisaKod, uzunLink FROM linkler")
+	for rows.Next() {
+		var kisaKod, uzunLink string
+		rows.Scan(&kisaKod, &uzunLink)
+		urlMap[kisaKod] = uzunLink
+	}
+	rows.Close()
+	fmt.Println("Linkler yüklendi!")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")
@@ -57,6 +65,7 @@ func main() {
 
 		kisaKod := kisaKodUret()
 		urlMap[kisaKod] = uzunLink
+		db.Exec("INSERT INTO linkler (kisaKod, uzunLink) VALUES (?, ?)", kisaKod, uzunLink)
 		fmt.Fprintln(w, kisaKod)
 	})
 

@@ -57,6 +57,11 @@ func main() {
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
 		uzunLink := r.URL.Query().Get("url")
 
+		if uzunLink == "" {
+			http.Error(w, "Link boş olamaz!", 400)
+			return
+		}
+
 		for kod, link := range urlMap {
 			if link == uzunLink {
 				fmt.Fprintln(w, kod)
